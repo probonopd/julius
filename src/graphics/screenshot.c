@@ -5,6 +5,8 @@
 #include "graphics/screen.h"
 #include "graphics/graphics.h"
 
+#include "platform/vita.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -64,6 +66,7 @@ void graphics_save_screenshot(void)
         return;
     }
     const char *filename = generate_filename();
+    filename = vita_prepend_path(filename);
     FILE *fp = fopen(filename, "wb");
     if (!fp) {
         log_error("Unable to write screenshot to:", filename, 0);
