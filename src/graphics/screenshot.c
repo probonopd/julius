@@ -6,7 +6,7 @@
 #include "graphics/screen.h"
 #include "graphics/graphics.h"
 
-#include "platform/vita.h"
+#include "platform/vita/vita.h"
 
 #include <stdio.h>
 #include <stdlib.h>
