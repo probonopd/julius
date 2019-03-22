@@ -35,9 +35,9 @@ then
 cat > "bintray.json" <<EOF
 {
   "package": {
-    "subject": "bvschaik",
+    "subject": "devnoname120",
     "repo": "julius",
-    "name": "switch-unstable",
+    "name": "vita",
     "licenses": ["AGPL-V3"],
     "vcs_url": "https://github.com/bvschaik/julius.git"
   },
