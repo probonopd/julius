@@ -30,7 +30,7 @@ cat > "bintray.json" <<EOF
   "publish": true
 }
 EOF
-elif [ $DEPLOY = "SWITCH" ]
+elif [ $DEPLOY = "switch" ]
 then
 cat > "bintray.json" <<EOF
 {
