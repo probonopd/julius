@@ -10,7 +10,7 @@ else
   then
     # Static build using musl which is a portable libc
     export CC=musl-gcc
-    cmake -DCMAKE_EXE_LINKER_FLAGS="-static" -DOPENSSL_USE_STATIC_LIBS=ON ..
+    cmake -DCMAKE_EXE_LINKER_FLAGS="-static" -DSDL2_USE_STATIC_LIBS=ON ..
   else
     cmake ..
   fi
