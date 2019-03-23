@@ -5,5 +5,13 @@ elif [ "$SWITCH_BUILD" = "true" ];
 then
   docker exec switchdev /bin/bash -c "mkdir build && cd build && cmake -DSWITCH_BUILD=ON .."
 else
-  mkdir build && cd build && cmake ..
+  mkdir build && cd build
+  if [ $MUSL_LIBC ];
+  then
+    # Static build using musl which is a portable libc
+    export CC=musl-gcc
+    cmake -DCMAKE_EXE_LINKER_FLAGS="-static" ..
+  else
+    cmake ..
+  fi
 fi;
