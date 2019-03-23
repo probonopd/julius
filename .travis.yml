@@ -43,7 +43,7 @@ after_deploy:
   - ./.ci_scripts/bintray_link.sh
 
 install:
-  - if [ $MUSL_LIBC ]; then apt install musl-tools; fi
+  - if [ $MUSL_LIBC ]; then sudo apt install musl-tools; fi
   - ./.ci_scripts/docker.sh
 cache:
   directories:
