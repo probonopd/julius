@@ -73,6 +73,15 @@ else()
   set(SDL2_PROCESSOR_ARCH "x86")
 endif(CMAKE_SIZEOF_VOID_P EQUAL 8)
 
+if(SDL2_USE_STATIC_LIBS)
+  set(_sdl2_ORIG_CMAKE_FIND_LIBRARY_SUFFIXES ${CMAKE_FIND_LIBRARY_SUFFIXES})
+  if(WIN32)
+    set(CMAKE_FIND_LIBRARY_SUFFIXES .lib .a ${CMAKE_FIND_LIBRARY_SUFFIXES})
+  else()
+    set(CMAKE_FIND_LIBRARY_SUFFIXES .a )
+  endif()
+endif()
+
 SET(SDL2_SEARCH_PATHS
 	~/Library/Frameworks
 	/Library/Frameworks
@@ -192,3 +201,8 @@ INCLUDE(FindPackageHandleStandardArgs)
 FIND_PACKAGE_HANDLE_STANDARD_ARGS(SDL2
                                   REQUIRED_VARS SDL2_LIBRARY SDL2_INCLUDE_DIR
                                   VERSION_VAR SDL2_VERSION_STRING)
+
+# Restore the original find library ordering
+if(SDL2_USE_STATIC_LIBS)
+  set(CMAKE_FIND_LIBRARY_SUFFIXES ${_sdl2_ORIG_CMAKE_FIND_LIBRARY_SUFFIXES})
+endif()
