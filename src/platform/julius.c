@@ -65,7 +65,7 @@ enum {
 };
 
 static void handler(int sig) {
-#if defined(__GNUC__) && !defined(__MINGW32__) && !defined(__OpenBSD__) && !defined(__vita__) && !defined(__SWITCH__)
+#if defined(__GLIBC__) && !defined(__MINGW32__) && !defined(__OpenBSD__) && !defined(__vita__) && !defined(__SWITCH__)
     void *array[100];
     size_t size;
 
