@@ -5,7 +5,7 @@ matrix:
   include:
   - os: linux
     compiler: gcc
-    env: CC=musl-gcc MUSL_LIBC=1 SDL_LIB=SDL2-2.0.9 SDL_MIXER_LIB=SDL2_mixer-2.0.4 DEPLOY=linux RUN_CODECOV=1
+    env: MUSL_LIBC=1 SDL_LIB=SDL2-2.0.9 SDL_MIXER_LIB=SDL2_mixer-2.0.4 DEPLOY=linux RUN_CODECOV=1
   - os: linux
     compiler: gcc
     env: SDL_LIB=SDL2-2.0.0 SDL_MIXER_LIB=SDL2_mixer-2.0.0
@@ -43,7 +43,6 @@ after_deploy:
   - ./.ci_scripts/bintray_link.sh
 
 install:
-  - if [ $MUSL_LIBC ]; then sudo add-apt-repository -y universe && sudo apt-get -y update && sudo apt install -y musl-tools; fi
   - ./.ci_scripts/docker.sh
 # cache:
 #   directories:
@@ -51,6 +50,8 @@ install:
 #   - $SDL_MIXER_LIB
 
 before_install:
+  - if [ $MUSL_LIBC ]; then sudo add-apt-repository -y universe && sudo apt-get -y update && sudo apt install -y musl-tools; fi
+  - if [ $MUSL_LIBC ]; then export CC=musl-gcc; fi
   - ./.ci_scripts/setup.sh
 
 before_script:
