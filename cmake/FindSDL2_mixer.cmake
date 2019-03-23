@@ -40,6 +40,15 @@ else()
   set(SDL2_PROCESSOR_ARCH "x86")
 endif(CMAKE_SIZEOF_VOID_P EQUAL 8)
 
+if(SDL2_USE_STATIC_LIBS)
+  set(_sdl2_ORIG_CMAKE_FIND_LIBRARY_SUFFIXES ${CMAKE_FIND_LIBRARY_SUFFIXES})
+  if(WIN32)
+    set(CMAKE_FIND_LIBRARY_SUFFIXES .lib .a ${CMAKE_FIND_LIBRARY_SUFFIXES})
+  else()
+    set(CMAKE_FIND_LIBRARY_SUFFIXES .a )
+  endif()
+endif()
+
 SET(SDL2_SEARCH_PATHS
 	~/Library/Frameworks
 	/Library/Frameworks
@@ -129,3 +138,7 @@ set(SDL2MIXER_FOUND ${SDL2_MIXER_FOUND})
 
 mark_as_advanced(SDL2_MIXER_LIBRARY SDL2_MIXER_INCLUDE_DIR)
 
+# Restore the original find library ordering
+if(SDL2_USE_STATIC_LIBS)
+  set(CMAKE_FIND_LIBRARY_SUFFIXES ${_sdl2_ORIG_CMAKE_FIND_LIBRARY_SUFFIXES})
+endif()
