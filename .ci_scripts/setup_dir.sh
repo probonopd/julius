@@ -10,7 +10,7 @@ else
   then
     # Static build using musl which is a portable libc
     export CC=musl-gcc
-    cmake -DCMAKE_EXE_LINKER_FLAGS="-static" ..
+    cmake -DCMAKE_EXE_LINKER_FLAGS="-static" -DCMAKE_FIND_LIBRARY_SUFFIXES=".a" ..
   else
     cmake ..
   fi
