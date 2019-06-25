@@ -408,7 +408,7 @@ static int pre_init(const char *custom_data_dir)
 
     // AppImage support
     if (chdir("../share/julius") == 0) {
-      SDL_Log("Loading AppImage game from %s", getcwd());
+      SDL_Log("Loading AppImage game from %s/../share/julius", prev);
       if (game_pre_init()) {
         free(prev);
         return 1;
