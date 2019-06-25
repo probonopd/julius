@@ -50,7 +50,15 @@ function install_sdl_lib {
     ../configure
   fi
   make
-  sudo make install
+
+  if type "sudo" > /dev/null
+  then
+    sudo make install
+  else
+    # CentOS docker image used for building AppImage does not have sudo
+    make install
+  fi
+
   cd ../..
 }
 
