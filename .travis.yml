@@ -39,8 +39,9 @@ install:
   - ./.ci_scripts/start_docker.sh
   - if [ "$BUILD_TARGET" != "appimage" ];
     then
-      ./.ci_scripts/install_sdl.sh
+      ./.ci_scripts/install_sdl.sh;
     fi;
+
 before_script:
   - ./.ci_scripts/run_cmake.sh
 
