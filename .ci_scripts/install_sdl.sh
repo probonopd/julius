@@ -59,7 +59,7 @@ function install_sdl_lib {
 
   if [ "$BUILD_TARGET" == "appimage" ]
   then
-    make install DESTDIR=AppDir
+    make install DESTDIR=$(pwd)/AppDir
   else
     sudo make install
   fi
