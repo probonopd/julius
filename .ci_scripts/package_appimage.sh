@@ -2,6 +2,7 @@
 
 docker exec appimage /bin/bash -c "cd build
 
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/
 ldconfig -p | grep SDL
 
 # wget https://github.com/TheAssassin/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
