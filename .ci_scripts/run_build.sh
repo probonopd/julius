@@ -3,7 +3,7 @@
 case "$BUILD_TARGET" in
 "appimage")
 	docker exec appimage /bin/bash -c "cd build && make && make install DESTDIR=AppDir"
-	bash package_appimage.sh
+	bash .ci_scripts/package_appimage.sh
 	;;
 "vita")
 	docker exec vitasdk /bin/bash -c "cd build && make"
