@@ -18,6 +18,7 @@
 #include "tinyfiledialogs/tinyfiledialogs.h"
 
 #include <signal.h>
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -403,7 +404,7 @@ static int pre_init(const char *custom_data_dir)
     }
 
 
-    char *prev;
+    char *prev = NULL;
     prev = getcwd(prev, 0);
 
     // AppImage support
