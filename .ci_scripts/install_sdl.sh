@@ -61,7 +61,7 @@ function install_sdl_lib {
   then
     make install DESTDIR=AppDir
   else
-    make install
+    sudo make install
   fi
 
   cd ../..
