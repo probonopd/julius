@@ -2,7 +2,6 @@
 
 case "$BUILD_TARGET" in
 "appimage")
-    docker exec appimage -e BUILD_TARGET="$BUILD_TARGET" -e SDL_LIB="$SDL_LIB" -e SDL_MIXER_LIB="$SDL_MIXER_LIB" /bin/bash ".ci_scripts/install_sdl.h"
 	docker exec appimage /bin/bash -c "cd build && make && make install DESTDIR=AppDir"
 	bash package_appimage.sh
 	;;
