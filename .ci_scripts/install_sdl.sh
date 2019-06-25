@@ -47,17 +47,22 @@ function install_sdl_lib {
     cd $LIB
     mkdir build
     cd build
-    ../configure
+    if [ "$BUILD_TARGET" == "appimage" ]
+    then
+      ../configure --prefix=/usr
+    else
+      ../configure
+    endif
+
   fi
   make
 
-  if type "sudo" > /dev/null
+  if [ "$BUILD_TARGET" == "appimage" ]
   then
-    sudo make install
+    make install DESTDIR=AppDir
   else
-    # CentOS docker image used for building AppImage does not have sudo
     make install
-  fi
+  endif
 
   cd ../..
 }
