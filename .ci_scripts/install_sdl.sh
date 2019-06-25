@@ -52,7 +52,7 @@ function install_sdl_lib {
       ../configure --prefix=/usr
     else
       ../configure
-    endif
+    fi
 
   fi
   make
@@ -62,7 +62,7 @@ function install_sdl_lib {
     make install DESTDIR=AppDir
   else
     make install
-  endif
+  fi
 
   cd ../..
 }
