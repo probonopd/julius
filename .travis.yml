@@ -4,7 +4,7 @@ sudo: require
 dist: xenial
 
 install:
-  - sudo apt-get -y install libgl1-mesa-dev libsdl2-dev
+  - sudo apt-get -y install libgl1-mesa-dev libsdl2-dev libsdl2-mixer-dev
 
 script:
   - cd src/
