@@ -13,5 +13,6 @@ wget https://github.com/linuxdeploy/linuxdeploy-plugin-appimage/releases/downloa
 
 chmod +x linuxdeploy*.AppImage
 
-./linuxdeploy-centos6-x86_64.AppImage --appimage-extract-and-run --appdir AppDir/ --output appimage
+./linuxdeploy-centos6-x86_64.AppImage --appimage-extract-and-run --appdir AppDir
+./linuxdeploy-plugin-appimage-x86_64.AppImage --appimage-extract-and-run --appdir AppDir
 "
