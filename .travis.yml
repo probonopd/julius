@@ -7,7 +7,6 @@ install:
   - sudo apt-get -y install libgl1-mesa-dev libsdl2-dev libsdl2-mixer-dev
 
 script:
-  - cd src/
   - cmake . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   - make -j$(nproc)
   - make DESTDIR=appdir -j$(nproc) install ; find appdir/
